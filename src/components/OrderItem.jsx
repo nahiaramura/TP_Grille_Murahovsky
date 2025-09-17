@@ -8,13 +8,13 @@ const OrderItem = React.memo(({ id, customer, items, status, date, onStatusChang
   const total = items.reduce((acc, it) => acc + it.quantity * it.price, 0);
 
   return (
-    <div className="order-item" style={{ marginBottom: 16, padding: 12, border: "1px solid #444", borderRadius: 8 }}>
+    <div className="order-card" style={{ marginBottom: 16 }}>
       <h3>Pedido #{id}</h3>
       <p><strong>Cliente:</strong> {customer}</p>
       <p><strong>Fecha:</strong> {date.toLocaleDateString()}</p>
 
       <div style={{ overflowX: "auto" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <table>
           <thead>
             <tr>
               <th style={{ textAlign: "left" }}>Producto</th>

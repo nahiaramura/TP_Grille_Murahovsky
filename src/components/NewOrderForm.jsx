@@ -66,30 +66,39 @@ const NewOrderForm = ({ onAdd }) => {
       <div style={{ marginTop: 8 }}>
         <strong>Productos</strong>
         {items.map((it, idx) => (
-          <div key={idx} style={{ display: "flex", gap: 8, margin: "4px 0" }}>
+          <div key={idx} className="form-row" style={{ margin: "6px 0" }}>
             <input
-              placeholder="Nombre"
+              placeholder="Nombre del producto"
               value={it.name}
               onChange={(e) => updateRow(idx, "name", e.target.value)}
               style={{ flex: 2 }}
+              title="Nombre del producto"
             />
-            <input
-              type="number"
-              min="1"
-              placeholder="Cant."
-              value={it.quantity}
-              onChange={(e) => updateRow(idx, "quantity", e.target.value)}
-              style={{ width: 80, textAlign: "right" }}
-            />
-            <input
-              type="number"
-              min="0"
-              step="0.01"
-              placeholder="Precio"
-              value={it.price}
-              onChange={(e) => updateRow(idx, "price", e.target.value)}
-              style={{ width: 120, textAlign: "right" }}
-            />
+            <div style={{ width: 80 }}>
+              <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>Cantidad</div>
+              <input
+                type="number"
+                min="1"
+                placeholder="Cantidad"
+                value={it.quantity}
+                onChange={(e) => updateRow(idx, "quantity", e.target.value)}
+                style={{ width: "100%", textAlign: "right" }}
+                title="Cantidad de unidades"
+              />
+            </div>
+            <div style={{ width: 120 }}>
+              <div style={{ fontSize: 12, color: "var(--muted)", marginBottom: 4 }}>Precio unitario</div>
+              <input
+                type="number"
+                min="0"
+                step="0.01"
+                placeholder="Precio unitario"
+                value={it.price}
+                onChange={(e) => updateRow(idx, "price", e.target.value)}
+                style={{ width: "100%", textAlign: "right" }}
+                title="Precio unitario"
+              />
+            </div>
             <button type="button" onClick={() => removeRow(idx)}>Quitar</button>
           </div>
         ))}
@@ -98,7 +107,7 @@ const NewOrderForm = ({ onAdd }) => {
         </button>
       </div>
 
-      <div style={{ marginTop: 8 }}>
+      <div className="form-actions" style={{ marginTop: 8 }}>
         <button type="submit">Agregar Pedido</button>
       </div>
     </form>

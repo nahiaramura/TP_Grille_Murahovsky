@@ -53,12 +53,38 @@ const Dashboard = () => {
   }, [orders]);
 
   return (
-    <div style={{ maxWidth: 900, margin: "32px auto", padding: "0 16px" }}>
-      <h1>Gestión de Pedidos</h1>
-      <OrderFilter filter={filter} setFilter={setFilter} />
-      <OrderStats {...stats} />
-      <OrderList orders={orders} filter={filter} onStatusChange={onStatusChange} />
-      <NewOrderForm onAdd={onAdd} />
+    <div className="container">
+      <div className="app-card">
+        <div className="app-header">
+          <div className="brand">
+            <img src="/logo.svg" alt="Logo MailAméricas" />
+            <div>
+              <div className="brand-title">MailAméricas</div>
+              <div className="brand-sub">Gestión de pedidos y ventas</div>
+            </div>
+          </div>
+          <div>
+            <OrderFilter filter={filter} setFilter={setFilter} />
+          </div>
+        </div>
+        <div className="content">
+          <div className="stats">
+            <div className="stat"><div className="label">Total</div><div className="value">{stats.total}</div></div>
+            <div className="stat"><div className="label">Pendientes</div><div className="value">{stats.pending}</div></div>
+            <div className="stat"><div className="label">Enviados</div><div className="value">{stats.shipped}</div></div>
+            <div className="stat"><div className="label">Entregados</div><div className="value">{stats.delivered}</div></div>
+          </div>
+
+          <div className="grid two" style={{ marginTop: 16 }}>
+            <div>
+              <OrderList orders={orders} filter={filter} onStatusChange={onStatusChange} />
+            </div>
+            <div>
+              <NewOrderForm onAdd={onAdd} />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
